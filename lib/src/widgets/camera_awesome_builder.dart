@@ -186,7 +186,8 @@ class CameraAwesomeBuilder extends StatefulWidget {
       PictureInPictureConfigBuilder? pictureInPictureConfigBuilder,
       AwesomeFilter? defaultFilter,
       List<AwesomeFilter>? availableFilters,
-      OnMediaCaptureEvent? onMediaCaptureEvent})
+      OnMediaCaptureEvent? onMediaCaptureEvent
+      this.deviceOrientations})
       : this._(
           sensorConfig: sensorConfig ??
               SensorConfig.single(
