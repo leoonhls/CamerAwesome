@@ -120,29 +120,28 @@ class CameraAwesomeBuilder extends StatefulWidget {
 
   final List<DeviceOrientation>? deviceOrientations;
 
-  const CameraAwesomeBuilder._({
-    required this.sensorConfig,
-    required this.enablePhysicalButton,
-    required this.progressIndicator,
-    required this.saveConfig,
-    required this.onMediaTap,
-    required this.builder,
-    required this.previewFit,
-    required this.defaultFilter,
-    this.onImageForAnalysis,
-    this.imageAnalysisConfig,
-    this.onPreviewTapBuilder,
-    this.onPreviewScaleBuilder,
-    this.previewDecoratorBuilder,
-    required this.theme,
-    this.previewPadding = EdgeInsets.zero,
-    this.previewAlignment = Alignment.center,
-    this.showPreview = true,
-    required this.pictureInPictureConfigBuilder,
-    this.availableFilters,
-    this.onMediaCaptureEvent,
-    this.deviceOrientations
-  });
+  const CameraAwesomeBuilder._(
+      {required this.sensorConfig,
+      required this.enablePhysicalButton,
+      required this.progressIndicator,
+      required this.saveConfig,
+      required this.onMediaTap,
+      required this.builder,
+      required this.previewFit,
+      required this.defaultFilter,
+      this.onImageForAnalysis,
+      this.imageAnalysisConfig,
+      this.onPreviewTapBuilder,
+      this.onPreviewScaleBuilder,
+      this.previewDecoratorBuilder,
+      required this.theme,
+      this.previewPadding = EdgeInsets.zero,
+      this.previewAlignment = Alignment.center,
+      this.showPreview = true,
+      required this.pictureInPictureConfigBuilder,
+      this.availableFilters,
+      this.onMediaCaptureEvent,
+      this.deviceOrientations});
 
   /// Use the camera with the built-in interface.
   ///
@@ -186,8 +185,8 @@ class CameraAwesomeBuilder extends StatefulWidget {
       PictureInPictureConfigBuilder? pictureInPictureConfigBuilder,
       AwesomeFilter? defaultFilter,
       List<AwesomeFilter>? availableFilters,
-      OnMediaCaptureEvent? onMediaCaptureEvent
-      this.deviceOrientations})
+      OnMediaCaptureEvent? onMediaCaptureEvent,
+      List<DeviceOrientation>? deviceOrientations})
       : this._(
           sensorConfig: sensorConfig ??
               SensorConfig.single(
@@ -367,7 +366,8 @@ class _CameraWidgetBuilder extends State<CameraAwesomeBuilder>
 
   @override
   void didChangeDependencies() {
-    deviceOrientations ?? SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    widget.deviceOrientations ??
+        SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     super.didChangeDependencies();
   }
 
